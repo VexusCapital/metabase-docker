@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: metabase
+    env: docker
+    plan: free # Escolha o plano que se encaixa nas suas necessidades
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: MB_DB_FILE
+        value: /metabase-data/metabase.db
+    disk:
+      name: metabase-data
+      mountPath: /metabase-data
+      sizeGB: 1
