@@ -4,8 +4,6 @@ services:
     env: docker
     plan: starter
     dockerfile: Dockerfile
-    buildCommand: |
-      echo "Building Metabase container..."
     environment:
       - key: MB_DB_TYPE
         value: postgres
