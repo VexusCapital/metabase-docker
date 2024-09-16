@@ -3,5 +3,6 @@ services:
     name: metabase
     env: docker
     dockerfile: Dockerfile
+    memory: 2GB
     port: 3000
     plan: free
