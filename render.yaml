@@ -1,25 +1,22 @@
-version: "3.9"
 services:
-  metabase:
-    image: metabase/metabase:latest
-    container_name: metabase
-    hostname: metabase
-    ports:
-      - 3000:3000
+  - type: web
+    name: metabase
+    env: docker
+    plan: starter
+    dockerfile: Dockerfile
+    buildCommand: |
+      echo "Building Metabase container..."
     environment:
-      MB_DB_TYPE: postgres
-      MB_DB_DBNAME: postgres
-      MB_DB_PORT: 6543
-      MB_DB_USER: postgres.whyavrfcbyjmchtsfwin
-      MB_DB_PASS: IDa3uCSQF9VSw1Ul
-      MB_DB_HOST: aws-0-sa-east-1.pooler.supabase.com
-    networks:
-      - metanet1
-    healthcheck:
-      test: curl --fail -I http://localhost:3000/api/health || exit 1
-      interval: 15s
-      timeout: 5s
-      retries: 5
-networks:
-  metanet1:
-    driver: bridge
+      - key: MB_DB_TYPE
+        value: postgres
+      - key: MB_DB_DBNAME
+        value: postgres
+      - key: MB_DB_PORT
+        value: "6543"
+      - key: MB_DB_USER
+        value: postgres.whyavrfcbyjmchtsfwin
+      - key: MB_DB_PASS
+        value: IDa3uCSQF9VSw1Ul
+      - key: MB_DB_HOST
+        value: aws-0-sa-east-1.pooler.supabase.com
+    port: 3000
