@@ -6,6 +6,15 @@ services:
     dockerfile: Dockerfile
     buildCommand: |
       echo "Building Metabase container..."
+    startCommand: |
+      docker run -d -p 3000:3000 \
+        -e "MB_DB_TYPE=postgres" \
+        -e "MB_DB_DBNAME=postgres" \
+        -e "MB_DB_PORT=6543" \
+        -e "MB_DB_USER=postgres.whyavrfcbyjmchtsfwin" \
+        -e "MB_DB_PASS=IDa3uCSQF9VSw1Ul" \
+        -e "MB_DB_HOST=aws-0-sa-east-1.pooler.supabase.com" \
+        --name metabase metabase/metabase
     environment:
       - key: MB_DB_TYPE
         value: postgres
