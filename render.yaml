@@ -2,8 +2,6 @@ services:
   - type: web
     name: metabase
     env: docker
+    dockerfile: Dockerfile
+    port: 3000
     plan: free
-    dockerfile_path: ./Dockerfile
-    port: 80  # Porta externa exposta na web
-    build_command: ""
-    start_command: "java -DMB_JETTY_PORT=3000 -jar metabase.jar"
